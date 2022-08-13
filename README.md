@@ -17,25 +17,11 @@ struct WindowsListView: View {
     var body: some View {
         List {
             if let activeWindow = windowsDetector.activeWindow {
-                WindowInfoItem(window: activeWindow)
-                    .background(Color.red)
+                Text(window.id).background(Color.red)
             }
             ForEach(windowsDetector.userWindows) {
-                WindowInfoItem(window: $0)
+                Text(window.id)
             }
-        }
-    }
-}
-
-private struct WindowInfoItem: View {
-    
-    let window: WindowInfo
-    
-    var body: some View {
-        HStack {
-            Text("\(window.id)").frame(width: 50)
-            Text(window.title ?? "n/a").frame(width: 100)
-            Text(window.processName ?? "n/a").frame(width: 200)
         }
     }
 }
