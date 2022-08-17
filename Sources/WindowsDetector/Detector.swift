@@ -35,11 +35,8 @@ public class WindowsDetector: ObservableObject {
         userWindows = windows
             .filter { $0.isVisible }
             .filter { !$0.isSystemProcess }
-            .filter { !$0.isMenuItem }
-        
-        let frontmostProcessId = NSWorkspace.shared.frontmostProcessId
-        activeWindow = userWindows
-            .first { $0.processId == frontmostProcessId }
+            .filter { !$0.isMenuItem }        
+        activeWindow = userWindows.first { $0.isFrontmost }
     }
 }
 

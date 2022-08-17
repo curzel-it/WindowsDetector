@@ -5,7 +5,6 @@ public struct WindowInfo {
     public let alpha: CGFloat
     public let frame: CGRect
     public let id: Int
-    public let isOnScreen: Bool
     public let layer: Int
     public let processName: String?
     public let processId: Int?
@@ -21,7 +20,6 @@ public struct WindowInfo {
         alpha = dict["kCGWindowAlpha"] as? CGFloat ?? 0
         frame = windowBounds
         id = windowNumber
-        isOnScreen = (dict["kCGWindowIsOnscreen"] as? Int) == 1
         layer = dict["kCGWindowLayer"] as? Int ?? 0
         processId = dict["kCGWindowOwnerPID"] as? Int
         processName = dict["kCGWindowOwnerName"] as? String
@@ -38,7 +36,7 @@ extension WindowInfo {
         let isOpaque = alpha > 0
         let sizeNotZero = frame.size != .zero
         let isVisibleLayer = layer >= 0
-        return isOnScreen && isOpaque && sizeNotZero && isVisibleLayer
+        return isOpaque && sizeNotZero && isVisibleLayer
     }
 }
 
@@ -48,6 +46,15 @@ extension WindowInfo {
     
     public var isMenuItem: Bool {
         frame.minY == 0 && frame.height < 25
+    }
+}
+
+// MARK: - Frontmost window
+
+extension WindowInfo {
+    
+    public var isFrontmost: Bool {
+        processId == NSWorkspace.shared.frontmostProcessId
     }
 }
 
@@ -73,7 +80,8 @@ extension WindowInfo {
 extension WindowInfo: CustomStringConvertible {
     
     public var description: String {
-        "Window { id=\(id); process=\(processName ?? "n/a") }"
+        let name = title ?? processName ?? "Window"
+        return "\(name) { id=\(id); process=\(processName ?? "n/a") }"
     }
 }
 

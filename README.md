@@ -12,16 +12,12 @@ import WindowsDetector
 
 struct WindowsListView: View {
     
-    @StateObject var windowsDetector = WindowsDetector().started(pollInterval: 10)
+    @StateObject var windowsDetector = WindowsDetector().started(pollInterval: 1)
     
     var body: some View {
-        List {
-            if let activeWindow = windowsDetector.activeWindow {
-                Text(window.id).background(Color.red)
-            }
-            ForEach(windowsDetector.userWindows) {
-                Text(window.id)
-            }
+        List(windowsDetector.userWindows) { window in
+            Text(window.description)
+                .background(window.isFrontmost ? Color.red : Color.clear)
         }
     }
 }
