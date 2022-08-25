@@ -63,15 +63,17 @@ extension WindowInfo {
 extension WindowInfo {
     
     private static let knownSystemProcesses: [String] = [
-        "Control Centre",
-        "Dock",
-        "Menubar",
-        "Spotlight",
-        "Window Server"
+        "control centre",
+        "dock",
+        "menubar",
+        "screencapture",
+        "screenshot",
+        "spotlight",
+        "window server"
     ]
     
     public var isSystemProcess: Bool {
-        WindowInfo.knownSystemProcesses.contains(processName ?? "")
+        WindowInfo.knownSystemProcesses.contains(processName?.lowercased() ?? "")
     }
 }
 
