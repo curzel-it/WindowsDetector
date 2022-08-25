@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "windowsdetector",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/curzel-it/WindowsDetector",
+      "state" : {
+        "revision" : "fe2e0e2172df1e48436fe146affd447b2198fd10",
+        "version" : "1.0.2"
+      }
+    }
+  ],
+  "version" : 2
+}
