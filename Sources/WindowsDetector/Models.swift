@@ -66,6 +66,7 @@ extension WindowInfo {
         "control centre",
         "dock",
         "menubar",
+        "notification centre",
         "screencapture",
         "screenshot",
         "spotlight",
