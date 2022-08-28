@@ -1,6 +1,6 @@
 # WindowsDetector
 
-Swift Package that allows you to list all windows running on the user macOS system.
+Swift Package to list all windows running on the user macOS system.
 
 # Usage
 
