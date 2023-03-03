@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "WindowsDetector",
-    platforms: [.macOS(.v11)],
+    platforms: [.macOS(.v11), .iOS(.v13)],
     products: [
         .library(
             name: "WindowsDetector",
@@ -12,8 +12,7 @@ let package = Package(
     ],
     dependencies: [],
     targets: [
-        .target(
-            name: "WindowsDetector",
-            dependencies: [])
+        .target(name: "WindowsDetector", dependencies: []),
+        .testTarget(name: "WindowsDetectorTests", dependencies: ["WindowsDetector"])
     ]
 )

@@ -1,17 +1,9 @@
-import Cocoa
-
-extension NSWorkspace {
-    
-    var frontmostProcessId: Int? {
-        Int(frontmostApplication?.processIdentifier ?? 0)
-    }
-}
+import CoreGraphics
+import Foundation
 
 extension CGRect {
-    
-    init?(from someBounds: NSDictionary?) {
-        guard let frameDict = someBounds,
-              let x = frameDict["X"] as? CGFloat,
+    init?(from frameDict: NSDictionary) {
+        guard let x = frameDict["X"] as? CGFloat,
               let y = frameDict["Y"] as? CGFloat,
               let width = frameDict["Width"] as? CGFloat,
               let height = frameDict["Height"] as? CGFloat

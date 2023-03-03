@@ -1,13 +1,11 @@
-import Cocoa
+import Foundation
 
-public class WindowsDetector: ObservableObject {
-    
-    private let service = WindowsDetectionService()
-    
+public class WindowsDetector: ObservableObject {    
     @Published public var windows: [WindowInfo] = []
     @Published public var userWindows: [WindowInfo] = []
     @Published public var activeWindow: WindowInfo?
     
+    private let service = WindowsDetectionService()
     private var timer: Timer!
     
     public init() {}
