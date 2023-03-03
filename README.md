@@ -6,6 +6,8 @@ This solution is App Store-compliant and does not require user actions, nor spec
 
 This is being used [in production](https://apps.apple.com/app/desktop-pets/id1575542220) by my Desktop Pets app (which is also [here on GitHub](https://github.com/curzel-it/pet-therapy)).
 
+The package will return a mocked, empty, list of windows on iOS, support has been added to ease development of multiplatform apps. 
+
 # Usage
 
 You can use a WindowsDetector instance like any other ObservableObject, like in the state of your view: 
